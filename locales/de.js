@@ -1,12 +1,11 @@
 /**
- @classes translated static text in German
- Ext.ux.Localization determines browser language and than loads corresponding file from folder locales
- @example text: Locales.BUTTON.CANCEL
+ @classes singleton class which holds all translated static text in German
+ Ext.ux.Localization determines language and than uses corresponding file from folder locales
+ @example text: Loc.t('BUTTON.CANCEL')
  */
 
 Ext.define('locales.de', {
     extend: 'Ext.Base',
-    alternateClassName: 'Locales',
 
     singleton: true,
 
@@ -27,9 +26,6 @@ Ext.define('locales.de', {
         GETTINGSTARTED: 'Einführung'
     },
     LOCALIZATION: {
-        AUTO: 'Automatisch',
-        EN: 'Englisch',
-        DE: 'Deutsch',
         CHANGELANGUAGE: 'Sprache Wechseln',
         CHANGELANGUAGEQUESTION: 'Sie müssen die Applikation neu starten, damit die neue Sprache angezeigt werden kann.'
     }

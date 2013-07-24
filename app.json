@@ -2,7 +2,7 @@
     /**
      * The application's namespace, used by Sencha Command to generate classes
      */
-    "name": "tooltip_demo",
+    "name": "localization_demo",
 
     /**
      * The file path to this application's front HTML document, relative to this app.json file
@@ -96,8 +96,7 @@
     "resources": [
         "resources/images",
         "resources/icons",
-        "resources/startup",
-        "locales"
+        "resources/startup"
     ],
 
     /**
@@ -130,7 +129,7 @@
         "product": "touch",
         "minVersion": 3,
         "debug": false,
-        "logger": "no"
+        "logger": "false"
     },
 
     /**

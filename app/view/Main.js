@@ -4,14 +4,14 @@ Ext.define('localization_demo.view.Main', {
     requires: [
         'Ext.TitleBar',
         'Ext.Video',
-        'Ext.field.Select'
+        'Ext.ux.localization.view.SelectFieldLocalization'
     ],
     config: {
         tabBarPosition: 'bottom',
 
         items: [
             {
-                title: Localization.t('MAIN.WELCOME'),
+                title: Loc.t('MAIN.WELCOME'),
                 iconCls: 'home',
 
                 styleHtmlContent: true,
@@ -20,65 +20,47 @@ Ext.define('localization_demo.view.Main', {
                 items: [{
                     docked: 'top',
                     xtype: 'titlebar',
-                    title: Localization.t('MAIN.WELCOMESENCHA'),
+                    title: Loc.t('MAIN.WELCOMESENCHA'),
                     items: [
                         {
                             align:'right',
-                            xtype:'selectfield',
+                            xtype:'selectfieldlocalization',
                             usePicker: false,
-                            value: Localization.get_select_mode(),
-                            options: [
-                                {
-                                    text: Locales.LOCALIZATION.AUTO,
-                                    value: 'auto'
-                                },
-                                {
-                                    text: Locales.LOCALIZATION.EN,
-                                    value: 'en'
-                                },
-                                {
-                                    text: Locales.LOCALIZATION.DE,
-                                    value: 'de'
-                                }
-                            ],
-                            listeners: {
-                                change: function (selectBox, newValue, oldValue, eOpts) {
-                                    Localization.set_select_mode(newValue);
-                                    //prompt user to restart application after changing language
-                                    Ext.Msg.show({
-                                        title: Localization.t('LOCALIZATION.CHANGELANGUAGE'),
-                                        message: Localization.t('LOCALIZATION.CHANGELANGUAGEQUESTION'),
-                                        buttons: [{text:Localization.t('BUTTON.YES'),ui:'green-dark'},{text:Localization.t('BUTTON.NO'),ui:'red-dark'}],
-                                        fn: function(buttonId) {
-                                            if (buttonId === Localization.t('BUTTON.YES')) {
-                                                window.location.reload();
-                                            }
+                            fnReload: function() {
+                                //prompt user to restart application after changing language
+                                Ext.Msg.show({
+                                    title: Loc.t('LOCALIZATION.CHANGELANGUAGE'),
+                                    message: Loc.t('LOCALIZATION.CHANGELANGUAGEQUESTION'),
+                                    buttons: [{text:Loc.t('BUTTON.YES'),ui:'green-dark'},{text:Loc.t('BUTTON.NO'),ui:'red-dark'}],
+                                    fn: function(buttonId) {
+                                        if (buttonId === Loc.t('BUTTON.YES')) {
+                                            window.location.reload();
                                         }
-                                    });
-                                }
+                                    }
+                                });
                             }
                         }
                     ]
                 },
                 {
                     xtype: 'textfield',
-                    placeHolder: Localization.t('MAIN.WELCOMEMESSAGE')
+                    placeHolder: Loc.t('MAIN.WELCOMEMESSAGE')
 
                 },
                 {
                     xtype: 'button',
-                    text: Localization.t('BUTTON.OK'),
+                    text: Loc.t('BUTTON.OK'),
                     ui: 'confirm'
                 }],
 
                 html: [
-                    Localization.t('MAIN.WELCOMETEXT1'),
+                    Loc.t('MAIN.WELCOMETEXT1'),
                     "<a target='_blank' href=\"app/view/Main.js\">app/view/Main.js</a>",
-                    Localization.t('MAIN.WELCOMETEXT2')
+                    Loc.t('MAIN.WELCOMETEXT2')
                 ].join("")
             },
             {
-                title: Localization.t('MAIN.GETSTARTED'),
+                title: Loc.t('MAIN.GETSTARTED'),
                 iconCls: 'action',
                 id: 'pnlGetStarted',
 
@@ -86,7 +68,7 @@ Ext.define('localization_demo.view.Main', {
                     {
                         docked: 'top',
                         xtype: 'titlebar',
-                        title: Localization.t('MAIN.GETTINGSTARTED')
+                        title: Loc.t('MAIN.GETTINGSTARTED')
                     },
                     {
                         xtype: 'video',

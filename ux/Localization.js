@@ -94,12 +94,12 @@ Ext.define('Ext.ux.Localization', {
     t: function(identifier) {
         try {
 
-            return eval('locales.' + this.get_lang() + '.' + identifier);
+            return eval('locales.' + this.get_lang() + '.' + identifier).toString();
         }
         catch(e) {
             //translation missing -> look up in fallback language
             try {
-                return eval('locales.' + Ext.ux.localization.Config.fallback + '.' + identifier);
+                return eval('locales.' + Ext.ux.localization.Config.fallback + '.' + identifier).toString();
             }
             catch(e) {
                 return Ext.ux.localization.Config.safe_text
